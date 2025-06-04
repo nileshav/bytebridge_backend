@@ -1,0 +1,58 @@
+🔹 Step 1: Open VS Code Terminal in Backend Repo
+Make sure you're in the backend folder in VS Code (you should see your GitHub README in the folder).
+Then open a terminal in VS Code:
+Menu → Terminal → New Terminal
+OR press Ctrl + ` (backtick)
+
+🔹 Step 2: Create a Virtual Environment
+This keeps your project’s Python dependencies isolated.
+Windows:
+python -m venv venv
+.\venv\Scripts\activate
+macOS/Linux:
+python3 -m venv venv
+source venv/bin/activate
+
+🔹 Step 3: Install FastAPI & Dependencies
+Now install the backend libraries:
+pip install fastapi uvicorn boto3 python-multipart
+✅ These libraries are:
+fastapi – web framework
+uvicorn – server to run FastAPI
+boto3 – for AWS interaction (DynamoDB, S3)
+python-multipart – required for file uploads/forms
+
+🔹 Step 4: Create Your Backend File
+Create a new file:
+main.py
+Add this simple FastAPI starter code:
+
+from fastapi import FastAPI
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Backend is working!"}
+
+🔹 Step 5: Run the Server
+Run this command in the terminal:
+uvicorn main:app --reload
+You should see:
+Uvicorn running on http://127.0.0.1:8000
+Now open your browser and visit: http://127.0.0.1:8000
+
+✅ You’ll see:
+{"message":"Backend is working!"}
+Also try the built-in docs:
+Swagger UI: http://127.0.0.1:8000/docs
+
+🔹 Step 6: Create .gitignore
+Create a .gitignore file with this content:
+__pycache__/
+venv/
+.env
+
+🔹 Step 7: Save & Commit to GitHub
+git add .
+git commit -m "Initial FastAPI backend setup"
+git push -u origin main
